@@ -31,7 +31,7 @@ br.open(studi_url)
 
 ######
 print time.strftime("%Y-%m-%d %H:%M:%S")
-print "Fetching courses from ", studi_url
+print "Fetching the following courses from ", studi_url
 
 #Select current form set
 br.select_form(nr=0)
@@ -40,8 +40,6 @@ br.select_form(nr=0)
 br.form["asdf"] = studi_user
 br.form["fdsa"] = studi_password
 br.submit()
-if verbose:
-    print "connected"
 
 #Navigate to Notenspiegel
 br.follow_link(text_regex="Meine Pr\xc3\xbcfungen")
@@ -65,8 +63,7 @@ for td in soup.findAll('td'):
     if i == 0:
         for candidate in track:
             if td.get_text().find(candidate) >= 0:
-                if verbose:
-                    print td.get_text()
+                print td.get_text()
                 new_string += td.get_text()
                 i = 9
                 break
@@ -95,11 +92,11 @@ if hash_old != "":
                smtpObj = smtplib.SMTP('aquila.uberspace.de', 587)
                smtpObj.login(smtp_user,smtp_password)
                smtpObj.sendmail(sender, receivers, message)
-               print "\nSuccessfully sent email\n"
+               print "Successfully sent email"
             except smtplib.SMTPException:
-               print "\nError: unable to send email\n"
+               print "Error: unable to send email"
     else:
-        print "\nNothing new\n"
+        print "\n\nNothing new"
 
 #Sign out
 br.follow_link(text_regex="Abmelden")
