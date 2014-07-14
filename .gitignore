@@ -7,3 +7,4 @@ log.txt
 __pycache__/
 *.py[cod]
 .idea/
+*.save

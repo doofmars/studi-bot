@@ -22,7 +22,7 @@ studi_url = "https://studi-portal.hs-furtwangen.de"
 studi_user = 'hfu_name'
 studi_password = 'password'
 
-#Tracked courses
+#Add the courses you want to track here
 track = ["Sprachen",
          "Datenbanken",
          "Mathematik"]
