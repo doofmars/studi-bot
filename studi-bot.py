@@ -3,7 +3,6 @@ import os
 import hashlib
 import smtplib
 from mechanize import ParseResponse
-from pattern.web.soup import BeautifulSoup
 from config import *
 from bs4 import BeautifulSoup
 
@@ -30,8 +29,8 @@ br.addheaders = [('User-agent', 'Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.9.
 br.open(studi_url)
 
 ######
-
-print "Fetching the following Courses from ", studi_url
+print time.strftime("%Y-%m-%d %H:%M:%S")
+print "Fetching the following courses from ", studi_url
 
 #Select current form set
 br.select_form(nr=0)
