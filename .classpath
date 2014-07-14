@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="/home/jan/git/studi-bot/lib/commons-codec-1.9.jar"/>
+	<classpathentry kind="lib" path="/home/jan/git/studi-bot/lib/commons-collections-3.2.1.jar"/>
+	<classpathentry kind="lib" path="/home/jan/git/studi-bot/lib/commons-io-2.4.jar"/>
+	<classpathentry kind="lib" path="/home/jan/git/studi-bot/lib/commons-lang3-3.3.2.jar"/>
+	<classpathentry kind="lib" path="/home/jan/git/studi-bot/lib/commons-logging-1.1.3.jar"/>
+	<classpathentry kind="lib" path="/home/jan/git/studi-bot/lib/cssparser-0.9.14.jar"/>
+	<classpathentry kind="lib" path="/home/jan/git/studi-bot/lib/htmlunit-2.15.jar"/>
+	<classpathentry kind="lib" path="/home/jan/git/studi-bot/lib/htmlunit-core-js-2.15.jar"/>
+	<classpathentry kind="lib" path="/home/jan/git/studi-bot/lib/httpclient-4.3.3.jar"/>
+	<classpathentry kind="lib" path="/home/jan/git/studi-bot/lib/httpcore-4.3.2.jar"/>
+	<classpathentry kind="lib" path="/home/jan/git/studi-bot/lib/httpmime-4.3.3.jar"/>
+	<classpathentry kind="lib" path="/home/jan/git/studi-bot/lib/jetty-http-8.1.15.v20140411.jar"/>
+	<classpathentry kind="lib" path="/home/jan/git/studi-bot/lib/jetty-io-8.1.15.v20140411.jar"/>
+	<classpathentry kind="lib" path="/home/jan/git/studi-bot/lib/jetty-util-8.1.15.v20140411.jar"/>
+	<classpathentry kind="lib" path="/home/jan/git/studi-bot/lib/jetty-websocket-8.1.15.v20140411.jar"/>
+	<classpathentry kind="lib" path="/home/jan/git/studi-bot/lib/nekohtml-1.9.21.jar"/>
+	<classpathentry kind="lib" path="/home/jan/git/studi-bot/lib/sac-1.3.jar"/>
+	<classpathentry kind="lib" path="/home/jan/git/studi-bot/lib/serializer-2.7.1.jar"/>
+	<classpathentry kind="lib" path="/home/jan/git/studi-bot/lib/xalan-2.7.1.jar"/>
+	<classpathentry kind="lib" path="/home/jan/git/studi-bot/lib/xercesImpl-2.11.0.jar"/>
+	<classpathentry kind="lib" path="/home/jan/git/studi-bot/lib/xml-apis-1.4.01.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
