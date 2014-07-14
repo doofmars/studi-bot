@@ -2,6 +2,7 @@ import mechanize
 import os
 import hashlib
 import smtplib
+import time
 from mechanize import ParseResponse
 from config import *
 from bs4 import BeautifulSoup
