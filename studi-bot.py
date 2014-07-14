@@ -50,6 +50,9 @@ try:
     br.follow_link(text_regex="Meine Pr\xc3\xbcfungen")
     br.follow_link(text_regex="Notenspiegel")
 
+    if verbose:
+        print "Site recieved"
+
     #Convert HTML Page to Soup
     html = br.response().read()
     soup = BeautifulSoup(html)
@@ -61,6 +64,9 @@ try:
         fi = open("cache.txt", "r")
         hash_old = fi.read()
         fi.close()
+
+    if verbose:
+        print "Gather results"
 
     #Loop to gather results
     i = 0
@@ -102,9 +108,9 @@ try:
                 except smtplib.SMTPException:
                    print "\nError: unable to send email\n"
         else:
-            print "\nNothing new\n"
+            print "\nNothing is new\n"
     #Sign out
     br.follow_link(text_regex="Abmelden")
 except Exception, error:
-    print sys.exc_info()[0]
+    print sys.exc_info()
 

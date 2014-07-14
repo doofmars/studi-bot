@@ -15,3 +15,7 @@ Usage:
 Copy or rename the config-sample.py to config.py.
 Setup the config to your demans
 Add studi-bot.py to your crontab
+
+Important:
+
+Set PYTHONIOENCODING=utf8 before running your chrontab command.
