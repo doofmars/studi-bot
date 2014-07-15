@@ -44,7 +44,7 @@ try:
     br.form["fdsa"] = studi_password
     br.submit()
     if verbose:
-        print "connected"
+        print "Connected"
 
     #Navigate to Notenspiegel
     br.follow_link(text_regex="Meine Pr\xc3\xbcfungen")
@@ -101,7 +101,7 @@ try:
             print "Something has Changed"
             if send_mail:
                 try:
-                   smtpObj = smtplib.SMTP('aquila.uberspace.de', 587)
+                   smtpObj = smtplib.SMTP(smtp_server, smtp_port)
                    smtpObj.login(smtp_user,smtp_password)
                    smtpObj.sendmail(sender, receivers, message)
                    print "\nSuccessfully sent email\n"

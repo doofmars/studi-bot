@@ -4,6 +4,8 @@ verbose = 0
 send_mail = 1 # 1== Enabled
 smtp_user = "sender@sender.com"
 smtp_password = "password"
+smtp_server = "yourserver"
+smtp_port = 587 
 sender = smtp_user
 receivers = ['receiver@receiver.com']
 
