@@ -10,6 +10,7 @@ sender = smtp_user
 receivers = ['receiver@receiver.com']
 
 #Set Your message
+message_addresults = 1
 message = """From: Studi-Bot <python@doofmars.de>
 To: Receiver
 Subject: Studi-Portal: Something has Changed

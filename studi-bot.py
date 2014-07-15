@@ -76,13 +76,13 @@ try:
                 if td.get_text().find(candidate) >= 0:
                     if verbose:
                         print td.get_text()
-                    new_string += td.get_text()
+                    new_string += "\n" + td.get_text()[:-1]
                     i = 9
                     break
         elif i > 0:
             if verbose:
                 print td.get_text()
-            new_string += td.get_text()
+            new_string += "\t" + td.get_text()[:-1]
             i -= 1
 
     #Generate hash from results
@@ -103,7 +103,10 @@ try:
                 try:
                    smtpObj = smtplib.SMTP(smtp_server, smtp_port)
                    smtpObj.login(smtp_user,smtp_password)
-                   smtpObj.sendmail(sender, receivers, message)
+                   if message_addresults:
+                       smtpObj.sendmail(sender, receivers, message + new_string.encode('utf-8'))
+                   else:
+                       smtpObj.sendmail(sender, receivers, message)
                    print "\nSuccessfully sent email\n"
                 except smtplib.SMTPException:
                    print "\nError: unable to send email\n"
