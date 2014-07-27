@@ -82,11 +82,10 @@ try:
         elif i > 0:
             if verbose:
                 print td.get_text()
-			if i == 2:
+            if i == 2:
                 new_string += "\t" + td.get_text()[1:]
             elif i == 1:
                 new_string += "\t" + td.get_text()[:-1]
-				
             i -= 1
 
     #Generate hash from results
@@ -114,8 +113,8 @@ try:
                    print "\nSuccessfully sent email\n"
                 except smtplib.SMTPException:
                    print "\nError: unable to send email\n"
-				finally:
-				   smtpObj.quit()
+                finally:
+                   smtpObj.quit()
         else:
             print "\nNothing is new\n"
     #Sign out
