@@ -5,7 +5,7 @@ from bs4 import BeautifulSoup
 #Internal Packages
 import os
 import hashlib
-from smtplib import SMTP_SSL as SMTP
+import smtplib
 import time
 import sys
 from config import *
@@ -103,8 +103,8 @@ try:
         if hash_old != hash_new_string.hexdigest():
             print "Something has Changed"
             if send_mail:
+                smtpObj = smtplib.SMTP(smtp_server, smtp_port)
                 try:
-                   smtpObj = SMTP(smtp_server, smtp_port)
                    smtpObj.login(smtp_user,smtp_password)
                    if message_addresults:
                        smtpObj.sendmail(sender, receivers, message + new_string.encode('utf-8'))
