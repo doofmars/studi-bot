@@ -5,7 +5,7 @@ from bs4 import BeautifulSoup
 #Internal Packages
 import os
 import hashlib
-import smtplib
+from smtplib import SMTP_SSL as SMTP
 import time
 import sys
 from config import *
@@ -82,7 +82,11 @@ try:
         elif i > 0:
             if verbose:
                 print td.get_text()
-            new_string += "\t" + td.get_text()[:-1]
+			if i == 2:
+                new_string += "\t" + td.get_text()[1:]
+            elif i == 1:
+                new_string += "\t" + td.get_text()[:-1]
+				
             i -= 1
 
     #Generate hash from results
@@ -101,7 +105,7 @@ try:
             print "Something has Changed"
             if send_mail:
                 try:
-                   smtpObj = smtplib.SMTP(smtp_server, smtp_port)
+                   smtpObj = SMTP(smtp_server, smtp_port)
                    smtpObj.login(smtp_user,smtp_password)
                    if message_addresults:
                        smtpObj.sendmail(sender, receivers, message + new_string.encode('utf-8'))
@@ -110,6 +114,8 @@ try:
                    print "\nSuccessfully sent email\n"
                 except smtplib.SMTPException:
                    print "\nError: unable to send email\n"
+				finally:
+				   smtpObj.quit()
         else:
             print "\nNothing is new\n"
     #Sign out
