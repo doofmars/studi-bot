@@ -37,7 +37,7 @@ def fetch_results():
 
     ######
     print(time.strftime("%Y-%m-%d %H:%M:%S"))
-    print("Fetching courses from ", studi_url)
+    print("Fetching courses from", studi_url)
 
     # Select current form set
     br.select_form(nr=0)
@@ -84,6 +84,7 @@ def fetch_results():
         fi.close()
 
     if verbose:
+        print("Old Hash:", hash_old)
         print("Gather results")
 
     # Loop to gather results
@@ -115,7 +116,7 @@ def fetch_results():
     # Generate hash from results
     hash_new_string = hashlib.md5(new_string.encode('utf-8'))
     if verbose:
-        print(hash_new_string.hexdigest())
+        print("New Hash:", hash_new_string.hexdigest())
 
     # Save new Hash
     fo = open("cache.txt", "w")
