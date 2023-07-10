@@ -2,7 +2,8 @@ Studi-Bot - parse the Studi-Portal site for Results
 
 ---
 
-Studi-Bot is a simple Python script to parse the Studi-Portal site for new Results on your marks. Designed to Run on a Rasperry Pi.
+Studi-Bot is a simple Python script to parse the LSF/Studi-Portal site for new Results on your marks. 
+Designed to Run on a Rasperry Pi. 
 This Script Comes with no warranty, use at your own risk.
 
 Requirements:
