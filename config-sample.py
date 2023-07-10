@@ -24,6 +24,7 @@ Goto https://studi-portal.hs-furtwangen.de to look it up!
 studi_url = "https://studi-portal.hs-furtwangen.de"
 studi_user = 'hfu_name'
 studi_password = 'password'
+studi_type = 'Abschluss 90 Master'
 
 # Add the courses you want to track here
 track = ["Sprachen",

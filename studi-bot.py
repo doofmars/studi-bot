@@ -6,6 +6,7 @@ from bs4 import BeautifulSoup
 import os
 import hashlib
 import smtplib
+import ssl
 import time
 from config import *
 
@@ -48,12 +49,27 @@ def fetch_results():
     if verbose:
         print("Connected")
 
-        # Navigate to Notenspiegel
-    br.follow_link(text_regex="Meine Pr\xc3\xbcfungen")
+    found = False
+    # Navigate to grade page
+    br.follow_link(text_regex="Prüfungsverwaltung")
     br.follow_link(text_regex="Notenspiegel")
+    # Find link with title that contains "studi_type"
+    for link in br.links():
+        for attr in link.attrs:
+            if attr[0] == "title":
+                if studi_type in attr[1]:
+                    br.follow_link(link)
+                    found = True
+                    if verbose:
+                        print("Found type link")
+                    break
+    if not found:
+        # Cannot get grades navigation is broken
+        print("Study type not found")
+        return
 
     if verbose:
-        print("Site recieved")
+        print("Site received")
 
     # Convert HTML Page to Soup
     html = br.response().read()
@@ -74,22 +90,26 @@ def fetch_results():
     i = 0
     for td in soup.findAll('td'):
         if i == 0:
+            # Check if td contains one of the courses
             for candidate in track:
                 if td.get_text().find(candidate) >= 0:
                     if verbose:
-                        print(td.get_text())
+                        print(td.get_text().strip())
 
-                    new_string += "\n" + td.get_text()[:-1]
-                    i = 9
+                    new_string += "\n" + td.get_text().strip()
+                    i = 6
                     break
+        # Get the next 5 td's without checking
         elif i > 0:
             if verbose:
-                print(td.get_text())
+                print(td.get_text().strip())
 
-            if i == 2:
-                new_string += "\t" + td.get_text()[1:]
-            elif i == 1:
-                new_string += "\t" + td.get_text()[:-1]
+            if i == 5:
+                # Get the grade
+                new_string += "\t" + td.get_text().strip()
+            elif i == 4:
+                # Get the passed information
+                new_string += "\t" + td.get_text().strip()
             i -= 1
 
     # Generate hash from results
@@ -107,20 +127,14 @@ def fetch_results():
         if hash_old != hash_new_string.hexdigest():
             print("Something has Changed")
             if send_mail:
-                smtpObj = smtplib.SMTP(smtp_server, smtp_port)
-                try:
-                    smtpObj.login(smtp_user, smtp_password)
+                context = ssl.create_default_context()
+                with smtplib.SMTP_SSL(smtp_server, smtp_port, context=context) as server:
+                    server.login(smtp_user, smtp_password)
                     if message_addresults:
-                        smtpObj.sendmail(sender, receivers, message + new_string.encode('utf-8'))
+                        server.sendmail(sender, receivers, message + new_string)
                     else:
-                        smtpObj.sendmail(sender, receivers, message)
+                        server.sendmail(sender, receivers, message)
                     print("\nSuccessfully sent email\n")
-
-                except smtplib.SMTPException:
-                    print("\nError: unable to send email\n")
-
-                finally:
-                    smtpObj.quit()
         else:
             print("\nNothing is new\n")
 
